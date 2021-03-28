@@ -1,0 +1,58 @@
+
+= deploy
+
+== deploy
+
+[source,cmd]
+----
+@echo off
+
+title deploy
+
+:init
+
+echo.
+set /p dir=请输入目录：
+
+rem set repositoryId=maven-releases
+rem set repositoryUrl=https://nexus.local.c332030.com/repository/maven-releases/
+
+rem set snapshotRepositoryId=maven-snapshots
+rem set snapshotRepositoryUrl=https://nexus.local.c332030.com/repository/maven-snapshots/
+
+cd %dir%
+start mvnn deploy
+
+cls
+goto init
+
+----
+
+
+== deploy
+
+[source,cmd]
+----
+@echo off
+title deploy-file
+
+:init
+
+echo.
+set /p groupId=请输入 groupId：
+
+echo.
+set /p artifactId=请输入 artifactId：
+
+echo.
+set /p version=请输入 version：
+
+echo.
+set /p file=请输入 file：
+
+start mvnn deploy:deploy-file -DrepositoryId=maven-snapshot -Durl=https://nexus.local.c332030.com/repository/maven-snapshots/ -DgroupId=%groupId% -DartifactId=%artifactId% -Dversion=%version% -Dpackaging=jar -Dfile=%file%
+
+cls
+goto init
+
+----

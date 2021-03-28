@@ -1,0 +1,15 @@
+
+= maven tree
+
+[source,cmd]
+----
+@echo off
+
+echo.
+set /p dir=请选择 Maven 目录：
+
+cd /d %dir%
+echo.
+mvn dependency:tree > %~dp0tree.txt
+
+----

@@ -1,0 +1,54 @@
+
+= link
+
+== windows
+[source,cmd]
+----
+@echo off
+
+echo.
+del /f app\bin\mmvn.cmd
+mklink /h app\bin\mmvn.cmd data\bin\mmvn.cmd
+
+del /f app\bin\mmvn7.cmd
+mklink /h app\bin\mmvn7.cmd data\bin\mmvn7.cmd
+
+del /f app\conf\settings.xml
+mklink /h app\conf\settings.xml data\conf\settings-local.xml
+
+del /f data\settings.xml
+mklink /h data\settings.xml data\conf\settings-local.xml
+
+del /f app\conf\settings-work.xml
+mklink /h app\conf\settings-work.xml data\conf\settings-work.xml
+
+rd /q %userprofile%\.m2
+mklink /h /j %userprofile%\.m2 data
+
+pause >nul
+
+----
+
+== unix
+[source,shell script]
+----
+
+rm -f app\bin\mmvn.cmd
+ln data\bin\mmvn.cmd app\bin\mmvn.cmd
+
+rm -f app\bin\mmvn7.cmd
+ln data\bin\mmvn7.cmd app\bin\mmvn7.cmd
+
+rm -f app\conf\settings.xml
+ln data\conf\settings-local.xml app\conf\settings.xml
+
+rm -f data\settings.xml
+ln data\conf\settings-local.xml data\settings.xml
+
+rm -f app\conf\settings-work.xml
+ln data\conf\settings-work.xml app\conf\settings-work.xml
+
+rmdir ~\.m2
+ln -s data ~\.m2
+
+----

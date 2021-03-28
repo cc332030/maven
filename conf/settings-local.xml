@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+		http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <localRepository>D:/program/dev/build/maven/data/repository</localRepository>
+
+  <!--
+    <properties>
+      <maven.deploy.skip>true</maven.deploy.skip>
+    </properties>
+  -->
+
+  <!-- 配置远程发布到私服，mvn deploy-->
+  <!--
+  <distributionManagement>
+    <repository>
+      <id>maven-releases</id>
+      <name>maven-releases</name>
+      <url>https://nexus.local.c332030.com/repository/maven-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>maven-snapshots</id>
+      <name>maven-snapshot</name>
+      <url>https://nexus.local.c332030.com/repository/maven-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+  -->
+
+  <!-- 配置远程仓库验证信息 -->
+  <servers>
+
+    <server>
+      <id>maven-releases</id>
+      <username>admin</username>
+      <password>123456</password>
+    </server>
+
+    <server>
+      <id>maven-snapshots</id>
+      <username>admin</username>
+      <password>123456</password>
+    </server>
+
+  </servers>
+
+  <mirrors>
+    <mirror>
+      <id>nexus</id>
+      <url>https://nexus.local.c332030.com/repository/maven-public/</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+
+  <profiles>
+    <profile>
+      <id>nexus</id>
+
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+
+      <repositories>
+        <repository>
+          <id>nexus</id>
+          <url>https://nexus.local.c332030.com/repository/maven-public/</url>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+        </repository>
+      </repositories>
+    </profile>
+
+  </profiles>
+
+</settings>

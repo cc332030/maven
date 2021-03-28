@@ -1,0 +1,19 @@
+
+= maven install
+
+[source,cmd]
+----
+@echo off
+title install
+
+:init
+echo.
+set /p dir=请选择目录：
+
+mvnn %dir% clean install
+
+pause>nul
+
+goto init
+
+----

@@ -1,0 +1,44 @@
+
+= maven version
+
+== release
+[source,shell script]
+----
+
+mvn release:clean
+
+# 发布版本
+mvn release:prepare
+
+# 回滚版本
+mvn release:rollback
+
+----
+
+== release
+[source,shell script]
+----
+
+# 版本号自动加 1
+mvn release:update-versions
+
+# 自动更新子模块
+mvn release:update-versions -DautoVersionSubmodules=true
+
+# 指定版本更新
+mvn --batch-mode release:update-versions -DdevelopmentVersion=1.2.0-SNAPSHOT
+
+----
+
+== 手动设置版本号
+
+[source,shell script]
+----
+
+mvn versions:set -DnewVersion=2.50.1-SNAPSHOT
+
+mvn versions:revert
+
+mvn versions:commit
+
+----

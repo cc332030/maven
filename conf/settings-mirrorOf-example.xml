@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings
+  xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <localRepository>D:/program/dev/build/maven/data/repository-c</localRepository>
+
+  <!--
+  <properties>
+    <maven.deploy.skip>true</maven.deploy.skip>
+  </properties>
+  -->
+
+  <!--
+  <distributionManagement>
+    <repository>
+      <id>releases</id>
+      <name>releases</name>
+      <url>http://172.16.35.13:8081/nexus/content/repositories/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>snapshots</name>
+      <url>http://172.16.35.13:8081/nexus/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+  -->
+
+  <servers>
+    <server>
+      <id>snapshots</id>
+      <username>admin</username>
+      <password>c</password>
+    </server>
+
+    <server>
+      <id>releases</id>
+      <username>admin</username>
+      <password>c</password>
+    </server>
+
+    <!--    <server>-->
+    <!--      <id>public-snapshots</id>-->
+    <!--      <username>deployment</username>-->
+    <!--      <password>deployment</password>-->
+    <!--    </server>-->
+  </servers>
+
+  <mirrors>
+
+    <mirror>
+      <id>_local</id>
+      <url>https://nexus.local.c332030.com/repository/maven-public/</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+
+    <mirror>
+      <id>nexus</id>
+      <url>http://172.16.35.13:8081/nexus/content/groups/public/</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+
+  </mirrors>
+
+  <profiles>
+    <profile>
+      <id>nexus</id>
+
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+
+      <repositories>
+        <repository>
+          <id>nexus</id>
+          <url>http://172.16.35.13:8081/nexus/content/groups/public/</url>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+        </repository>
+      </repositories>
+    </profile>
+
+  </profiles>
+
+</settings>

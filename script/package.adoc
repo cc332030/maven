@@ -1,0 +1,19 @@
+
+= maven package
+
+[source,cmd]
+----
+@echo off
+title package
+
+:init
+echo.
+set /p dir=请选择目录：
+
+cd %dir%
+start mvnn clean package
+
+cls
+goto init
+
+----

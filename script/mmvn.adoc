@@ -1,0 +1,15 @@
+
+= mmvn
+
+[source,cmd]
+----
+@echo off
+
+set JAVA_HOME=%JAVA_HOME_8%
+
+mvn --settings %M2_HOME%\conf\settings-128.xml %*
+rem mvn %*
+
+:: -XDignore.symbol.file
+
+----

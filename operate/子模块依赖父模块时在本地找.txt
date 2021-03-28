@@ -1,0 +1,2 @@
+
+不要加 parent.relativePath
