@@ -39,7 +39,7 @@
 
   <scm>
     <url>https://c332030.com</url>
-    <developerConnection>scm:svn:https://svn.com/svn/maven/branches/maven-1.0-SNAPSHOT</developerConnection>
+    <developerConnection>scm:svn:https://svn.com/svn/maven/branches/maven</developerConnection>
     <connection>scm:svn:https://svn.com/svn/maven</connection>
   </scm>
 
