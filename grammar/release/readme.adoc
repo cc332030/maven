@@ -1,8 +1,17 @@
 
 = maven release
 
+== folder tree
+
 [source,text]
 ----
+
+/svn/maven
+    - branches
+      - maven
+    - tags
+      - maven-1.0
+
 /svn/maven
     - branches
         - maven-1.0-SNAPSHOT
@@ -10,6 +19,8 @@
       - maven-1.0
     - trunk
 ----
+
+== pom.xml example
 
 [source,xml]
 ----
@@ -33,4 +44,16 @@
   </scm>
 
 </project>
+----
+
+== command
+
+[source,shell script]
+----
+mvn release:clean
+
+mvn release:prepare
+
+mvn release:rollback
+
 ----
