@@ -1,37 +1,42 @@
 
-# maven
+= maven
 
-## linux 环境变量
-```shell script
+== linux 环境变量
+
+[source,shell script]
+----
 vi /etc/profile
 
 export M2_HOME=/home/program/maven/app
 export PATH=$JAVA_HOME/bin:$M2_HOME/bin:$PATH
 
 source /etc/profile
-```
+----
 
-## 命令
+== 命令
 
 - mvn -e
 
     显示详细错误 信息
-    
+
 - mvn dependency:tree
+
+    -Dverbose 依赖明细
 
     查看依赖树，解决依赖问题
 
 - mvn validate
 
     验证工程是否正确，所有需要的资源是否可用。
-    
+
 - mvn verify
 
-    运行任何检查，验证包是否有效且达到质量标准。 
-    
-## exec 执行
+    运行任何检查，验证包是否有效且达到质量标准。
 
-```xml
+== exec 执行
+
+[source,xml]
+----
 <?xml version="1.0" encoding="utf-8" ?>
 
 <plugins>
@@ -50,14 +55,15 @@ source /etc/profile
         </configuration>
     </plugin>
 </plugins>
-```
+----
 
-```shell script
+[source,shell script]
+----
 mvn exec:java -Dexec.mainClass="c332030.Main"
 mvn exec:exec -Dexec.mainClass="c332030.Main"
-```
-    
-## param
+----
+
+== param
 
 - -DskipTests=true
 
