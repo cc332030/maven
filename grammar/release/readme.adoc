@@ -46,14 +46,31 @@
 </project>
 ----
 
-== command
+== release
 
 [source,shell script]
 ----
 mvn release:clean
 
-mvn release:prepare
+mvn release:prepare ^
+    -DautoVersionSubmodules=true
 
 mvn release:rollback
+
+----
+
+== snapshot
+[source,shell script]
+----
+
+# 版本号自动加 1
+mvn release:update-versions
+
+# 自动更新子模块
+mvn release:update-versions ^
+    -DautoVersionSubmodules=true
+
+# 指定版本更新
+mvn --batch-mode release:update-versions -DdevelopmentVersion=1.2.0-SNAPSHOT
 
 ----

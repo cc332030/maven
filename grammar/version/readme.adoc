@@ -1,44 +1,58 @@
 
-= maven version
+= version
 
-== release
+== command
 [source,shell script]
 ----
-
-mvn release:clean
-
-# 发布版本
-mvn release:prepare
-
-# 回滚版本
-mvn release:rollback
+mmvn versions:set ^
+    -DallowSnapshots=true ^
+    -DgenerateBackupPoms=false ^
+    -DnewVersion=1.0.0-SNAPSHOT
 
 ----
 
-== release
-[source,shell script]
-----
-
-# 版本号自动加 1
-mvn release:update-versions
-
-# 自动更新子模块
-mvn release:update-versions -DautoVersionSubmodules=true
-
-# 指定版本更新
-mvn --batch-mode release:update-versions -DdevelopmentVersion=1.2.0-SNAPSHOT
-
-----
-
-== 手动设置版本号
+== script
 
 [source,shell script]
 ----
+@echo off
 
-mvn versions:set -DnewVersion=2.50.1-SNAPSHOT
+:start
+cls
+echo.
+set /p project=请输入项目路径：
 
-mvn versions:revert
+echo.
+set /p version=请输入版本号：
 
-mvn versions:commit
+cd /d %project%
 
+echo.
+start mmvn versions:set  ^
+    -DallowSnapshots=true ^
+    -DgenerateBackupPoms=false ^
+    -DnewVersion=%version%
+
+goto start
+
+----
+
+== 参数
+
+[source,text]
+----
+|allowSnapshots |false |是否更新-snapshot快照版|
+|artifactId |${project.artifactId} |指定artifactId |
+|generateBackupPoms |true |是否备份pom文件 |
+|groupId |${project.groupId} |指定groupId |
+|newVersion | |设置的新版本号 |
+|nextSnapshot |false |更新版本号为下一个快照版本号|
+|oldVersion |${project.version} |指定需要更新的版本号可以使用缺省‘*’|
+|processAllModules |false |是否更新目录下所有模块无论是否声明父子节点|
+|processDependencies |true |是否更新依赖其的版本号|
+|processParent |true |是否更新父节点的版本号|
+|processPlugins |true |是否更新插件中的版本号|
+|processProject |true |是否更新模块自身的版本号|
+|removeSnapshot |false |移除snapshot快照版本，使之为release稳定版|
+|updateMatchingVersions |true |是否更新在子模块中显式指定的匹配版本(如/项目/版本)。|
 ----
