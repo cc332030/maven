@@ -28,7 +28,6 @@ cd /d %project%
 
 echo.
 start mmvn versions:set  ^
-    -DallowSnapshots=true ^
     -DgenerateBackupPoms=false ^
     -DnewVersion=%version%
 
