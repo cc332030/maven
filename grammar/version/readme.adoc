@@ -5,7 +5,6 @@
 [source,shell script]
 ----
 mvn versions:set ^
-    -DallowSnapshots=true ^
     -DgenerateBackupPoms=false ^
     -DnewVersion=1.0.0-SNAPSHOT
 
