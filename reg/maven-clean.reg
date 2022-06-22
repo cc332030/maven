@@ -1,0 +1,61 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven]
+"SubCommands"=dword:00000000
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell]
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\1_clean]
+@="clean"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\1_clean\command]
+@="cmd /c mvn clean"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\2_package]
+@="package"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\2_package\command]
+@="cmd /c mvn clean package"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\3_install]
+@="install"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\3_install\command]
+@="cmd /c mvn clean install"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\4_deploy]
+@="deploy"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\4_deploy\command]
+@="cmd /c mvn clean deploy"
+
+
+
+[HKEY_CLASSES_ROOT\Directory\shell\maven]
+"SubCommands"=dword:00000000
+
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell]
+
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\1_clean]
+@="clean"
+
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\1_clean\command]
+@="cmd /c mvn clean -f \"%1\\pom.xml\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\2_package]
+@="package"
+
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\2_package\command]
+@="cmd /c mvn clean package -f \"%1\\pom.xml\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\3_install]
+@="install"
+
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\3_install\command]
+@="cmd /c mvn clean install -f \"%1\\pom.xml\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\4_deploy]
+@="deploy"
+
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\4_deploy\command]
+@="cmd /c mvn clean deploy -f \"%1\\pom.xml\""
