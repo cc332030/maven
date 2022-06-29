@@ -1,61 +1,83 @@
 Windows Registry Editor Version 5.00
 
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\maven]
+
 [HKEY_CLASSES_ROOT\Directory\Background\shell\maven]
 "SubCommands"=dword:00000000
-
 [HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell]
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\01_clean]
 @="clean"
-
 [HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\01_clean\command]
 @="cmd /k mvn clean"
-
 [HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\02_package]
-@="package"
-
+@="clean package"
 [HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\02_package\command]
-@="cmd /k mvn package"
-
+@="cmd /k mvn clean package"
 [HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\03_install]
-@="install"
-
+@="clean install"
 [HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\03_install\command]
-@="cmd /k mvn install"
-
+@="cmd /k mvn clean install"
 [HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\04_deploy]
-@="deploy"
-
+@="clean deploy"
 [HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\04_deploy\command]
-@="cmd /k mvn deploy"
+@="cmd /k mvn clean deploy"
 
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\11_versions_set]
+@="versions set"
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\11_versions_set\command]
+@="cmd /k mvn versions:set"
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\12_versions_revert]
+@="versions revert"
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\12_versions_revert\command]
+@="cmd /k mvn versions:revert"
 
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\21_release_prepare]
+@="release prepare"
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\21_release_prepare\command]
+@="cmd /k mvn release:clean release:prepare -DautoVersionSubmodules=true"
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\22_release_rollback]
+@="release rollback"
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\22_release_rollback\command]
+@="cmd /k mvn release:rollback"
+
+[-HKEY_CLASSES_ROOT\Directory\shell\maven]
 
 [HKEY_CLASSES_ROOT\Directory\shell\maven]
 "SubCommands"=dword:00000000
-
 [HKEY_CLASSES_ROOT\Directory\shell\maven\shell]
 
 [HKEY_CLASSES_ROOT\Directory\shell\maven\shell\01_clean]
 @="clean"
-
 [HKEY_CLASSES_ROOT\Directory\shell\maven\shell\01_clean\command]
 @="cmd /k mvn clean -f \"%1\\pom.xml\""
-
 [HKEY_CLASSES_ROOT\Directory\shell\maven\shell\02_package]
-@="package"
-
+@="clean package"
 [HKEY_CLASSES_ROOT\Directory\shell\maven\shell\02_package\command]
-@="cmd /k mvn package -f \"%1\\pom.xml\""
-
+@="cmd /k mvn clean package -f \"%1\\pom.xml\""
 [HKEY_CLASSES_ROOT\Directory\shell\maven\shell\03_install]
-@="install"
-
+@="clean install"
 [HKEY_CLASSES_ROOT\Directory\shell\maven\shell\03_install\command]
-@="cmd /k mvn install -f \"%1\\pom.xml\""
-
+@="cmd /k mvn clean install -f \"%1\\pom.xml\""
 [HKEY_CLASSES_ROOT\Directory\shell\maven\shell\04_deploy]
-@="deploy"
-
+@="clean deploy"
 [HKEY_CLASSES_ROOT\Directory\shell\maven\shell\04_deploy\command]
-@="cmd /k mvn deploy -f \"%1\\pom.xml\""
+@="cmd /k mvn clean deploy -f \"%1\\pom.xml\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\11_versions_set]
+@="versions set"
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\11_versions_set\command]
+@="cmd /k mvn versions:set -f \"%1\\pom.xml\""
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\12_versions_revert]
+@="versions revert"
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\12_versions_revert\command]
+@="cmd /k mvn versions:revert -f \"%1\\pom.xml\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\21_release_prepare]
+@="release prepare"
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\21_release_prepare\command]
+@="cmd /k mvn release:clean release:prepare -DautoVersionSubmodules=true -f \"%1\\pom.xml\""
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\22_release_rollback]
+@="release rollback"
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\22_release_rollback\command]
+@="cmd /k mvn release:rollback -f \"%1\\pom.xml\""
