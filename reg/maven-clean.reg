@@ -5,28 +5,28 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell]
 
-[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\1_clean]
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\01_clean]
 @="clean"
 
-[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\1_clean\command]
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\01_clean\command]
 @="cmd /k mvn clean"
 
-[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\2_package]
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\02_package]
 @="clean package"
 
-[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\2_package\command]
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\02_package\command]
 @="cmd /k mvn clean package"
 
-[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\3_install]
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\03_install]
 @="clean install"
 
-[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\3_install\command]
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\03_install\command]
 @="cmd /k mvn clean install"
 
-[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\4_deploy]
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\04_deploy]
 @="clean deploy"
 
-[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\4_deploy\command]
+[HKEY_CLASSES_ROOT\Directory\Background\shell\maven\shell\04_deploy\command]
 @="cmd /k mvn clean deploy"
 
 
@@ -36,26 +36,26 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\Directory\shell\maven\shell]
 
-[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\1_clean]
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\01_clean]
 @="clean"
 
-[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\1_clean\command]
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\01_clean\command]
 @="cmd /k mvn clean -f \"%1\\pom.xml\""
 
-[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\2_package]
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\02_package]
 @="clean package"
 
-[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\2_package\command]
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\02_package\command]
 @="cmd /k mvn clean package -f \"%1\\pom.xml\""
 
-[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\3_install]
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\03_install]
 @="clean install"
 
-[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\3_install\command]
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\03_install\command]
 @="cmd /k mvn clean install -f \"%1\\pom.xml\""
 
-[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\4_deploy]
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\04_deploy]
 @="clean deploy"
 
-[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\4_deploy\command]
+[HKEY_CLASSES_ROOT\Directory\shell\maven\shell\04_deploy\command]
 @="cmd /k mvn clean deploy -f \"%1\\pom.xml\""
