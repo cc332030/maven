@@ -1,7 +1,5 @@
 @echo off
 
-%utf8%
-
 set maven=%~dp0data\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3
 
 set app=%~dp0data\app
