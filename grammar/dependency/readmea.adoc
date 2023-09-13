@@ -1,0 +1,14 @@
+
+= dependency
+
+查看依赖树，解决依赖问题
+[source,shell]
+----
+mvn dependency:tree -Dverbose 依赖明细
+----
+
+删除依赖重新下载
+[source,shell]
+----
+mvn dependency:purge-local-repository
+----
