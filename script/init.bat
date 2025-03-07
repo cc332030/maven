@@ -14,6 +14,8 @@ call link-file %~dp0data\conf %~dp0data %SETTING_NAME% settings.xml
 call link-file %~dp0data\conf %app%\conf %SETTING_NAME% settings.xml
 
 call link-file %~dp0data\bin %app%\bin mvn8.bat
+call link-file %~dp0data\bin %app%\bin mvntree.bat
+call link-file %~dp0data\bin %app%\bin mvntreetxt.bat
 
 call link-dir %~dp0data %userprofile%\.m2
 
