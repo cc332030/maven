@@ -15,7 +15,7 @@ on:
       command:
         required: false
         type: string
-        default: sh mvnw package -U
+        default: sh mvnw clean package -U
       artifact-path:
         required: false
         type: string
