@@ -1,0 +1,55 @@
+
+name: build
+
+on:
+  workflow_call:
+    inputs:
+      distribution:
+        required: false
+        type: string
+        default: temurin
+      java-version:
+        required: false
+        type: string
+        default: 21
+      command:
+        required: false
+        type: string
+        default: sh mvnw package -U
+      artifact-path:
+        required: false
+        type: string
+        default: |
+          **/target/*.jar
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: cache
+        uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/pom.xml') }}
+          path: |
+            ~/.m2/wrapper
+            ~/.m2/repository
+      - name: setup-java
+        uses: actions/setup-java@v4
+        if: ${{ inputs.java-version != '' }}
+        with:
+          distribution: ${{ inputs.distribution }}
+          java-version: ${{ inputs.java-version }}
+      - name: build
+        run: ${{ inputs.command }}
+      - id: artifact-name
+        name: artifact-name
+        run: |
+          echo "artifact-name=${{ github.event.repository.name }}.${{ github.ref_name }}.${{ github.run_id }}" >> $GITHUB_OUTPUT
+      - name: upload-artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.artifact-name.outputs.artifact-name }}
+          path: ${{ inputs.artifact-path }}
+          retention-days: 7
