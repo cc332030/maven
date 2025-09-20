@@ -79,6 +79,10 @@ jobs:
         run: sh mvnw help:effective-settings
       - name: deploy
         run: sh mvnw clean deploy -U
+        env:
+          NEXUS_ID: ${{ inputs.nexus-id }}
+          NEXUS_SNAPSHOT_URL: ${{ secrets.NEXUS_SNAPSHOT_URL }}
+          NEXUS_RELEASE_URL: ${{ secrets.NEXUS_RELEASE_URL }}
       - name: init-maven-clean
         if: ${{ always() }}
         run: curl -sL https://github.com/cc332030/maven/raw/master/script/linux/init-maven-clean.sh | sh
