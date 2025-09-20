@@ -78,10 +78,18 @@ jobs:
         with:
           distribution: ${{ inputs.distribution }}
           java-version: ${{ env.JAVA_VERSION }}
+      - name: load-nexus-id
+        run: |
+          if [ -n "${{ inputs.nexus-id }}" ]; then
+            echo "NEXUS_ID=${{ inputs.nexus-id }}" >> $GITHUB_ENV
+          else
+            echo "NEXUS_ID=$(echo "${{ github.repository }}" | cut -d '/' -f 1)" >> $GITHUB_ENV
+          fi
+          echo "NEXUS_ID=${{ env.NEXUS_ID }}
       - name: init-maven
         run: curl -sL https://github.com/cc332030/maven/raw/master/script/linux/init-maven.sh | sh
         env:
-          NEXUS_ID: ${{ inputs.nexus-id }}
+          NEXUS_ID: ${{ env.NEXUS_ID }}
           NEXUS_CENTRAL: ${{ inputs.nexus-central }}
           NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
           NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
