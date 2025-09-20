@@ -97,7 +97,7 @@ jobs:
       - name: deploy
         run: sh mvnw clean deploy -U
         env:
-          NEXUS_ID: ${{ inputs.nexus-id }}
+          NEXUS_ID: ${{ env.NEXUS_ID }}
           NEXUS_SNAPSHOT_URL: ${{ secrets.NEXUS_SNAPSHOT_URL }}
           NEXUS_RELEASE_URL: ${{ secrets.NEXUS_RELEASE_URL }}
       - name: init-maven-clean
