@@ -79,7 +79,7 @@ echo "
 
 </settings>
 
-" > "MAVEN_PROPERTIES_PATH"
+" > "${MAVEN_PROPERTIES_PATH}"
 
 user=$(whoami)
 if [ "root" = "$user" ]
