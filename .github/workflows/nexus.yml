@@ -48,27 +48,24 @@ jobs:
         run: |
           cat ${{inputs.env-file}}
           cat ${{inputs.env-file}} >> $GITHUB_ENV
-      - name: set-java-version
+
+      - name: load-java-version
         run: |
-          
           JAVA_VERSION=${{ inputs.java-version }}
+
+          if [ -z "${JAVA_VERSION}" ]; then
+            JAVA_VERSION=${{ env.JAVA_VERSION }}
+          fi
           if [ -z "${JAVA_VERSION}" ]; then
             JAVA_VERSION=$(grep '<java.version>' pom.xml | sed -n 's/.*<java.version>\(.*\)<\/java.version>.*/\1/p')
           fi
-          
           if [ -z "${JAVA_VERSION}" ]; then
             JAVA_VERSION=21
           fi
           
           echo "JAVA_VERSION=${JAVA_VERSION}"
           echo "JAVA_VERSION=${JAVA_VERSION}" >> $GITHUB_ENV
-      - name: cache
-        uses: actions/cache@v4
-        with:
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          path: |
-            ~/.m2/repository/
-            ~/.m2/wrapper/
+
       - name: setup-java
         uses: actions/setup-java@v4
         if: ${{ env.JAVA_VERSION != '' }}
@@ -83,6 +80,7 @@ jobs:
           fi
           echo "NEXUS_ID=${NEXUS_ID}"
           echo "NEXUS_ID=${NEXUS_ID}" >> $GITHUB_ENV
+
       - name: init-maven
         run: curl -sL https://github.com/cc332030/maven/raw/master/script/linux/init-maven.sh | sh
         env:
@@ -94,6 +92,13 @@ jobs:
           NEXUS_RELEASE_URL: ${{ secrets.NEXUS_RELEASE_URL }}
 #      - name: verify
 #        run: sh mvnw help:effective-settings
+      - name: cache
+        uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          path: |
+            ~/.m2/repository/
+            ~/.m2/wrapper/
       - name: deploy
         run: sh mvnw clean deploy -U
         env:
