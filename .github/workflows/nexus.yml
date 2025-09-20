@@ -49,22 +49,19 @@ jobs:
           cat ${{inputs.env-file}}
           cat ${{inputs.env-file}} >> $GITHUB_ENV
       - name: set-java-version
-        if: ${{ inputs.java-version != '' }}
         run: |
-          echo "JAVA_VERSION=${{ inputs.java-version }}"
-          echo "JAVA_VERSION=${{ inputs.java-version }}" >> $GITHUB_ENV
-      - name: load-java-version
-        if: ${{ env.JAVA_VERSION == '' }}
-        run: |
-          JAVA_VERSION=$(grep '<java.version>' pom.xml | sed -n 's/.*<java.version>\(.*\)<\/java.version>.*/\1/p')
-          echo "JAVA_VERSION=${JAVA_VERSION}"
-          if [ -n "$JAVA_VERSION" ]; then
-            echo "JAVA_VERSION=${JAVA_VERSION}" >> $GITHUB_ENV
+          
+          JAVA_VERSION=${{ inputs.java-version }}
+          if [ -z "${JAVA_VERSION}" ]; then
+            JAVA_VERSION=$(grep '<java.version>' pom.xml | sed -n 's/.*<java.version>\(.*\)<\/java.version>.*/\1/p')
           fi
-      - name: default-java-version
-        if: ${{ env.JAVA_VERSION == '' }}
-        run: |
-          echo "JAVA_VERSION=21" >> $GITHUB_ENV
+          
+          if [ -z "${JAVA_VERSION}" ]; then
+            JAVA_VERSION=21
+          fi
+          
+          echo "JAVA_VERSION=${JAVA_VERSION}"
+          echo "JAVA_VERSION=${JAVA_VERSION}" >> $GITHUB_ENV
       - name: cache
         uses: actions/cache@v4
         with:
