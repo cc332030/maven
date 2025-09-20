@@ -1,7 +1,9 @@
 
 .deploy: &deploy
-  - docker:
-      image: ibm-semeru-runtimes:open-8-jdk
+  - env:
+      JDK_VERSION: !reference [jdk-version]
+    docker:
+      image: ibm-semeru-runtimes:open-${JDK_VERSION}-jdk
       volumes:
         - /root/.m2/repository:copy-on-write
         - /root/.m2/wrapper:copy-on-write
