@@ -1,4 +1,6 @@
 
+jdk-version: 21
+
 .deploy: &deploy
   - env:
       JDK_VERSION: !reference [jdk-version]
