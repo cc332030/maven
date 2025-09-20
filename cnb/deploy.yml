@@ -4,13 +4,13 @@ jdk-version: 21
 .deploy: &deploy
   - env:
       JDK_VERSION: !reference [jdk-version]
+    services:
+      - docker
     docker:
       image: ibm-semeru-runtimes:open-${JDK_VERSION}-jdk
       volumes:
         - /root/.m2/repository:copy-on-write
         - /root/.m2/wrapper:copy-on-write
-    services:
-      - docker
     stages:
       - name: init-maven
         imports: https://cnb.cool/${CNB_GROUP_SLUG}/secrets/-/blob/main/secrets.yml
