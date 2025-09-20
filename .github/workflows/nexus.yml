@@ -1,5 +1,5 @@
 
-name: deploy
+name: nexus
 
 on:
   workflow_call:
@@ -39,7 +39,7 @@ on:
         required: true
 
 jobs:
-  deploy:
+  nexus:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
