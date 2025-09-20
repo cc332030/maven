@@ -11,7 +11,6 @@ on:
       java-version:
         required: false
         type: string
-        default: 21
       artifact-path:
         required: false
         type: string
@@ -44,6 +43,9 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+      - name: import-env
+        if: ${{ hashFiles(inputs.env-file) != '' }}
+        run: cat ${{inputs.env-file}} >> $GITHUB_ENV
       - name: set-java-version
         if: ${{ inputs.java-version != '' }}
         run: |
@@ -57,9 +59,10 @@ jobs:
           if [ -n "$JAVA_VERSION" ]; then
             echo "JAVA_VERSION=${JAVA_VERSION}" >> $GITHUB_ENV
           fi
-      - name: import-env
-        if: ${{ hashFiles(inputs.env-file) != '' }}
-        run: cat ${{inputs.env-file}} >> $GITHUB_ENV
+      - name: default-java-version
+        if: ${{ env.JAVA_VERSION == '' }}
+        run: |
+          echo "JAVA_VERSION=21" >> $GITHUB_ENV
       - name: cache
         uses: actions/cache@v4
         with:
