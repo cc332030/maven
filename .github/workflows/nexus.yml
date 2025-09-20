@@ -100,7 +100,7 @@ jobs:
             ~/.m2/repository/
             ~/.m2/wrapper/
       - name: deploy
-        run: sh mvnw clean deploy -U
+        run: sh mvnw -T $(grep -c ^processor /proc/cpuinfo)C clean deploy -U
         env:
           NEXUS_ID: ${{ env.NEXUS_ID }}
           NEXUS_SNAPSHOT_URL: ${{ secrets.NEXUS_SNAPSHOT_URL }}
