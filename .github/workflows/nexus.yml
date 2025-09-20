@@ -84,8 +84,8 @@ jobs:
           if [ -z "${NEXUS_ID}" ]; then
             NEXUS_ID=$(echo "${{ github.repository }}" | cut -d '/' -f 1)
           fi
-          echo "NEXUS_ID=${{ env.NEXUS_ID }}"
-          echo "NEXUS_ID=${{ env.NEXUS_ID }}" >> $GITHUB_ENV
+          echo "NEXUS_ID=${NEXUS_ID}"
+          echo "NEXUS_ID=${NEXUS_ID}" >> $GITHUB_ENV
       - name: init-maven
         run: curl -sL https://github.com/cc332030/maven/raw/master/script/linux/init-maven.sh | sh
         env:
