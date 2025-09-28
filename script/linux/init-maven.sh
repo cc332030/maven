@@ -23,7 +23,13 @@ echo "
     <servers>
 
         <server>
-            <id>${NEXUS_ID}</id>
+            <id>${NEXUS_SNAPSHOT_ID}</id>
+            <username>${NEXUS_USERNAME}</username>
+            <password>${NEXUS_PASSWORD}</password>
+        </server>
+
+        <server>
+            <id>${NEXUS_RELEASE_ID}</id>
             <username>${NEXUS_USERNAME}</username>
             <password>${NEXUS_PASSWORD}</password>
         </server>
@@ -50,7 +56,7 @@ echo "
             <repositories>
 
                 <repository>
-                    <id>${NEXUS_ID}-snapshot</id>
+                    <id>${NEXUS_SNAPSHOT_ID}</id>
                     <url>${NEXUS_SNAPSHOT_URL}</url>
                     <snapshots>
                         <enabled>true</enabled>
@@ -61,7 +67,7 @@ echo "
                 </repository>
 
                 <repository>
-                    <id>${NEXUS_ID}-release</id>
+                    <id>${NEXUS_RELEASE_ID}</id>
                     <url>${NEXUS_RELEASE_URL}</url>
                     <snapshots>
                         <enabled>false</enabled>
