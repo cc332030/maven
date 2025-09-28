@@ -21,7 +21,10 @@ jdk-version: 21
           NEXUS_CENTRAL: https://mirrors.cloud.tencent.com/nexus/repository/maven-public/
           NEXUS_USERNAME: ${CNB_TOKEN_USER_NAME}
           NEXUS_PASSWORD: ${CNB_TOKEN_ARTIFACTORY}
+
+          NEXUS_SNAPSHOT_ID: ${CNB_GROUP_SLUG}-snapshot
           NEXUS_SNAPSHOT_URL: https://maven.cnb.cool/${CNB_GROUP_SLUG}/maven-snapshot/-/packages/
+          NEXUS_RELEASE_ID: ${CNB_GROUP_SLUG}-release
           NEXUS_RELEASE_URL: https://maven.cnb.cool/${CNB_GROUP_SLUG}/maven-release/-/packages/
 
       - name: deploy
@@ -32,8 +35,9 @@ jdk-version: 21
           sh mvnw -T ${CORE_NUM}C clean deploy -U
 
         env:
-          NEXUS_ID: ${CNB_GROUP_SLUG}
+          NEXUS_SNAPSHOT_ID: ${CNB_GROUP_SLUG}-snapshot
           NEXUS_SNAPSHOT_URL: https://maven.cnb.cool/${CNB_GROUP_SLUG}/maven-snapshot/-/packages/
+          NEXUS_RELEASE_ID: ${CNB_GROUP_SLUG}-release
           NEXUS_RELEASE_URL: https://maven.cnb.cool/${CNB_GROUP_SLUG}/maven-release/-/packages/
 
     endStages:
