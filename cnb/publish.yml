@@ -1,7 +1,7 @@
 
 jdk-version: 21
 
-.deploy: &deploy
+.publish: &publish
   - env:
       JDK_VERSION: !reference [jdk-version]
     services:
@@ -27,7 +27,7 @@ jdk-version: 21
           NEXUS_RELEASE_ID: ${CNB_GROUP_SLUG}-release
           NEXUS_RELEASE_URL: https://maven.cnb.cool/${CNB_GROUP_SLUG}/maven-release/-/packages/
 
-      - name: deploy
+      - name: publish
         script: |
           CORE_NUM=$(grep -c ^processor /proc/cpuinfo)
           echo "CORE_NUM=${CORE_NUM}"
@@ -47,9 +47,9 @@ jdk-version: 21
 
 "(main|master)":
   pull_request:
-    - <<: *deploy
+    - <<: *publish
   push:
-    - <<: *deploy
+    - <<: *publish
 $:
   tag_push:
-    - <<: *deploy
+    - <<: *publish
