@@ -7,7 +7,7 @@ echo 'init-maven'
 WORK_PATH=~/.m2
 echo "WORK_PATH: ${WORK_PATH}"
 
-mkdir -p "$WORK_PATH"
+mkdir -p "${WORK_PATH}"
 
 MAVEN_PROPERTIES=settings.xml
 MAVEN_PROPERTIES_PATH=${WORK_PATH}/${MAVEN_PROPERTIES}
@@ -17,8 +17,7 @@ echo "
 
 <settings xmlns=\"http://maven.apache.org/SETTINGS/1.0.0\"
           xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
-          xsi:schemaLocation=\"http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd\"
-          >
+          xsi:schemaLocation=\"http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd\" >
 
     <servers>
 
@@ -45,7 +44,6 @@ echo "
     </mirrors>
 
     <profiles>
-
         <profile>
             <id>${NEXUS_ID}</id>
 
@@ -78,27 +76,25 @@ echo "
                 </repository>
 
             </repositories>
-
         </profile>
-
     </profiles>
 
 </settings>
 
 " > "${MAVEN_PROPERTIES_PATH}"
 
-user=$(whoami)
-if [ "root" = "$user" ]
+USER=$(whoami)
+if [ "root" = "${USER}" ]
 then
   USER_HOME=/root
 else
-  USER_HOME=/home/$user
+  USER_HOME=/home/${USER}
 fi
 echo "USER_HOME: ${USER_HOME}"
 
-if [ ! ~ = "$USER_HOME" ]
+if [ ! ~ = "${USER_HOME}" ]
 then
-  ln -s $WORK_PATH "$USER_HOME"
+  ln -s ${WORK_PATH} "${USER_HOME}"
 fi
 
 echo 'init-maven successfully'
