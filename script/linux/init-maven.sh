@@ -38,7 +38,7 @@ echo "
     <mirrors>
         <mirror>
             <id>central</id>
-            <url>${NEXUS_CENTRAL}</url>
+            <url>${MAVEN_CENTRAL}</url>
             <mirrorOf>central</mirrorOf>
         </mirror>
     </mirrors>

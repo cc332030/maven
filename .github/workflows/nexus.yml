@@ -85,7 +85,7 @@ jobs:
         run: curl -sL https://github.com/cc332030/maven/raw/master/script/linux/init-maven.sh | sh
         env:
           NEXUS_ID: ${{ env.NEXUS_ID }}
-          NEXUS_CENTRAL: ${{ inputs.nexus-central }}
+          MAVEN_CENTRAL: ${{ inputs.nexus-central }}
           NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
           NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
           NEXUS_SNAPSHOT_URL: ${{ secrets.NEXUS_SNAPSHOT_URL }}
