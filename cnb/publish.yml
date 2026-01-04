@@ -9,8 +9,8 @@ jdk-version: 21
     docker:
       image: ibm-semeru-runtimes:open-${JDK_VERSION}-jdk
       volumes:
-        - /root/.m2/repository:copy-on-write
-        - /root/.m2/wrapper:copy-on-write
+        - maven-wrapper:/root/.m2/wrapper:copy-on-write
+        - ${CNB_REPO_NAME}-${JDK_VERSION}:/root/.m2/repository:copy-on-write
     stages:
       - name: init-maven
         imports: https://cnb.cool/${CNB_GROUP_SLUG}/secrets/-/blob/main/secrets.yml
