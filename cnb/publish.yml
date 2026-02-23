@@ -32,15 +32,15 @@ jdk-version: 21
 
           MAVEN_CENTRAL: https://mirrors.cloud.tencent.com/nexus/repository/maven-public/
 
-          NEXUS_SNAPSHOT_USERNAME: ${NEXUS_USERNAME}
-          NEXUS_SNAPSHOT_PASSWORD: ${NEXUS_PASSWORD}
           NEXUS_SNAPSHOT_ID: ${NEXUS_ID}-snapshot
           NEXUS_SNAPSHOT_URL: https://maven.cnb.cool/${NEXUS_ID}/maven-snapshot/-/packages/
+          NEXUS_SNAPSHOT_USERNAME: ${NEXUS_USERNAME}
+          NEXUS_SNAPSHOT_PASSWORD: ${NEXUS_PASSWORD}
 
-          NEXUS_RELEASE_USERNAME: ${NEXUS_USERNAME}
-          NEXUS_RELEASE_PASSWORD: ${NEXUS_PASSWORD}
           NEXUS_RELEASE_ID: ${NEXUS_ID}-release
           NEXUS_RELEASE_URL: https://maven.cnb.cool/${NEXUS_ID}/maven-release/-/packages/
+          NEXUS_RELEASE_USERNAME: ${NEXUS_USERNAME}
+          NEXUS_RELEASE_PASSWORD: ${NEXUS_PASSWORD}
 
     endStages:
       - name: init-maven-clean
