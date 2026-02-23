@@ -13,11 +13,11 @@ jdk-version: 21
         - ${CNB_REPO_NAME}-${JDK_VERSION}:/root/.m2/repository:copy-on-write
     stages:
       - name: init-maven
-        imports: https://cnb.cool/${CNB_GROUP_SLUG}/secrets/-/blob/main/secrets.yml
         script: |
           curl -sL https://github.com/cc332030/maven/raw/master/script/linux/init-maven.sh | sh
 
       - name: publish
+        imports: https://cnb.cool/${CNB_GROUP_SLUG}/secrets/-/blob/main/secrets.yml
         script: |
 
           CORE_NUM=$(grep -c ^processor /proc/cpuinfo)
