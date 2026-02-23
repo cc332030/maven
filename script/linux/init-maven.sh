@@ -13,6 +13,8 @@ MAVEN_PROPERTIES=settings.xml
 MAVEN_PROPERTIES_PATH=${WORK_PATH}/${MAVEN_PROPERTIES}
 
 SETTING_URL=https://github.com/cc332030/maven/raw/refs/heads/master/conf/settings-env.xml
+
+echo "SETTING_URL: ${SETTING_URL}"
 curl -sL -o "${MAVEN_PROPERTIES_PATH}" "${SETTING_URL}"
 
 USER=$(whoami)
@@ -26,7 +28,7 @@ echo "USER_HOME: ${USER_HOME}"
 
 if [ ! ~ = "${USER_HOME}" ]
 then
-  ln -s ${WORK_PATH} "${USER_HOME}"
+  ln -s "${WORK_PATH}" "${USER_HOME}"
 fi
 
 echo 'init-maven successfully'
