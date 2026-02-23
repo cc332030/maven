@@ -8,14 +8,14 @@
 
         <server>
             <id>${env.NEXUS_SNAPSHOT_ID}</id>
-            <username>${env.NEXUS_USERNAME}</username>
-            <password>${env.NEXUS_PASSWORD}</password>
+            <username>${env.NEXUS_SNAPSHOT_USERNAME}</username>
+            <password>${env.NEXUS_SNAPSHOT_PASSWORD}</password>
         </server>
 
         <server>
             <id>${env.NEXUS_RELEASE_ID}</id>
-            <username>${env.NEXUS_USERNAME}</username>
-            <password>${env.NEXUS_PASSWORD}</password>
+            <username>${env.NEXUS_RELEASE_USERNAME}</username>
+            <password>${env.NEXUS_RELEASE_PASSWORD}</password>
         </server>
 
     </servers>
