@@ -4,11 +4,6 @@ jdk-version: 21
 .publish: &publish
   - env:
       JDK_VERSION: !reference [jdk-version]
-
-      NEXUS_ID: ${CNB_GROUP_SLUG}
-      NEXUS_USERNAME: ${CNB_TOKEN_USER_NAME}
-      NEXUS_PASSWORD: ${CNB_TOKEN_ARTIFACTORY}
-
     services:
       - docker
     docker:
@@ -33,6 +28,10 @@ jdk-version: 21
           sh mvnw -T ${CORE_NUM}C clean deploy -U
 
         env:
+
+          NEXUS_ID: ${CNB_GROUP_SLUG}
+          NEXUS_USERNAME: ${CNB_TOKEN_USER_NAME}
+          NEXUS_PASSWORD: ${CNB_TOKEN_ARTIFACTORY}
 
           MAVEN_CENTRAL: https://mirrors.cloud.tencent.com/nexus/repository/maven-public/
 
