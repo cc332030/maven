@@ -24,9 +24,12 @@ jdk-version: 21
 
       - name: publish
         script: |
+
           CORE_NUM=$(grep -c ^processor /proc/cpuinfo)
           echo "CORE_NUM=${CORE_NUM}"
-          
+
+          env
+
           sh mvnw -T ${CORE_NUM}C clean deploy -U
 
         env:
