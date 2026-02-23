@@ -13,7 +13,7 @@ MAVEN_PROPERTIES=settings.xml
 MAVEN_PROPERTIES_PATH=${WORK_PATH}/${MAVEN_PROPERTIES}
 
 SETTING_URL=https://github.com/cc332030/maven/raw/refs/heads/master/conf/settings-env.xml
-curl -sL -o "${MAVEN_PROPERTIES_PATH} "${SETTING_URL}"
+curl -sL -o "${MAVEN_PROPERTIES_PATH}" "${SETTING_URL}"
 
 USER=$(whoami)
 if [ "root" = "${USER}" ]

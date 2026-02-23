@@ -4,8 +4,11 @@ jdk-version: 21
 .publish: &publish
   - env:
       JDK_VERSION: !reference [jdk-version]
+
+      NEXUS_ID: ${CNB_GROUP_SLUG}
       NEXUS_USERNAME: ${CNB_TOKEN_USER_NAME}
       NEXUS_PASSWORD: ${CNB_TOKEN_ARTIFACTORY}
+
     services:
       - docker
     docker:
@@ -18,19 +21,6 @@ jdk-version: 21
         imports: https://cnb.cool/${CNB_GROUP_SLUG}/secrets/-/blob/main/secrets.yml
         script: |
           curl -sL https://github.com/cc332030/maven/raw/master/script/linux/init-maven.sh | sh
-        env:
-          NEXUS_ID: ${CNB_GROUP_SLUG}
-          MAVEN_CENTRAL: https://mirrors.cloud.tencent.com/nexus/repository/maven-public/
-
-          NEXUS_SNAPSHOT_USERNAME: ${NEXUS_USERNAME}
-          NEXUS_SNAPSHOT_PASSWORD: ${NEXUS_PASSWORD}
-          NEXUS_SNAPSHOT_ID: ${CNB_GROUP_SLUG}-snapshot
-          NEXUS_SNAPSHOT_URL: https://maven.cnb.cool/${CNB_GROUP_SLUG}/maven-snapshot/-/packages/
-
-          NEXUS_RELEASE_USERNAME: ${NEXUS_USERNAME}
-          NEXUS_RELEASE_PASSWORD: ${NEXUS_PASSWORD}
-          NEXUS_RELEASE_ID: ${CNB_GROUP_SLUG}-release
-          NEXUS_RELEASE_URL: https://maven.cnb.cool/${CNB_GROUP_SLUG}/maven-release/-/packages/
 
       - name: publish
         script: |
@@ -40,10 +30,18 @@ jdk-version: 21
           sh mvnw -T ${CORE_NUM}C clean deploy -U
 
         env:
-          NEXUS_SNAPSHOT_ID: ${CNB_GROUP_SLUG}-snapshot
-          NEXUS_SNAPSHOT_URL: https://maven.cnb.cool/${CNB_GROUP_SLUG}/maven-snapshot/-/packages/
-          NEXUS_RELEASE_ID: ${CNB_GROUP_SLUG}-release
-          NEXUS_RELEASE_URL: https://maven.cnb.cool/${CNB_GROUP_SLUG}/maven-release/-/packages/
+          NEXUS_ID: ${NEXUS_ID}
+          MAVEN_CENTRAL: https://mirrors.cloud.tencent.com/nexus/repository/maven-public/
+
+          NEXUS_SNAPSHOT_USERNAME: ${NEXUS_USERNAME}
+          NEXUS_SNAPSHOT_PASSWORD: ${NEXUS_PASSWORD}
+          NEXUS_SNAPSHOT_ID: ${NEXUS_ID}-snapshot
+          NEXUS_SNAPSHOT_URL: https://maven.cnb.cool/${NEXUS_ID}/maven-snapshot/-/packages/
+
+          NEXUS_RELEASE_USERNAME: ${NEXUS_USERNAME}
+          NEXUS_RELEASE_PASSWORD: ${NEXUS_PASSWORD}
+          NEXUS_RELEASE_ID: ${NEXUS_ID}-release
+          NEXUS_RELEASE_URL: https://maven.cnb.cool/${NEXUS_ID}/maven-release/-/packages/
 
     endStages:
       - name: init-maven-clean
