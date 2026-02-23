@@ -58,6 +58,7 @@ echo "
                     <url>${NEXUS_SNAPSHOT_URL}</url>
                     <snapshots>
                         <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
                     </snapshots>
                     <releases>
                         <enabled>false</enabled>
