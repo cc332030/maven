@@ -5,6 +5,7 @@
 [source,shell script]
 ----
 mvn versions:set ^
+    -DprocessAllModules=true ^
     -DgenerateBackupPoms=false ^
     -DnewVersion=1.0.0-SNAPSHOT
 
