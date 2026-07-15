@@ -53,6 +53,6 @@ jdk-version: 21
     - <<: *publish
   push:
     - <<: *publish
-$:
-  tag_push:
-    - <<: *publish
+#$:
+#  tag_push:
+#    - <<: *publish
