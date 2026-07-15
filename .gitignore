@@ -27,3 +27,7 @@ target
 
 # executable file
 package
+
+.vscode
+.arts
+.codeartsdoer
