@@ -49,9 +49,9 @@ jdk-version: 21
           curl -sL https://github.com/cc332030/maven/raw/master/script/linux/init-maven-clean.sh | sh
 
 "(main|master)":
-  pull_request:
-    - <<: *publish
   push:
+    - <<: *publish
+  pull_request.merged:
     - <<: *publish
 #$:
 #  tag_push:
