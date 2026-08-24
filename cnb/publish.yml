@@ -51,8 +51,8 @@ jdk-version: 21
 "(main|master)":
   push:
     - <<: *publish
-  pull_request.merged:
-    - <<: *publish
+#  pull_request.merged:
+#    - <<: *publish
 #$:
 #  tag_push:
 #    - <<: *publish
